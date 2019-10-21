@@ -77,7 +77,6 @@ if(isset($_POST['nombre']) && isset($_POST['apellidos']) && isset($_POST['carrer
 
   <!-- Custom styles for this template -->
   <link href="../styles/css/scrolling-nav.css" rel="stylesheet">
-S
   <!-- Font Awesome-->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
