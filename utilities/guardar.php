@@ -6,8 +6,6 @@ include 'estudiantes.php';
 $layout = new layout(true,false,false);
 $methods = new methods();
 
-var_dump($methods->carreras);
-
 session_start();
 
 /*Seccion Guardar */
