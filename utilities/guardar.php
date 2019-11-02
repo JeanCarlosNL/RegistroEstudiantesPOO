@@ -47,11 +47,11 @@ if(isset($_POST['nombre']) && isset($_POST['apellidos']) && isset($_POST['carrer
   $nuevoEstudiante->foto=$name;
 
 
-    $isSuccess = $methods->CargarImagen($directory, $name, $tmpname, $type, $size);
+    /*$isSuccess = $methods->CargarImagen($directory, $name, $tmpname, $type, $size);
 
     if ($isSuccess) {
         $nuevoEstudiante->foto = $name;
-    }
+    }*/
 }
 
   array_push($estudiantes,$nuevoEstudiante);

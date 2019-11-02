@@ -31,37 +31,33 @@ if(isset($_POST['nombre']) && isset($_POST['apellidos']) && isset($_POST['carrer
 
   $actualizarEstudiante = new estudiante($_GET['ID'], $_POST['nombre'], $_POST['apellidos'], $_POST['carrera'],$materias,$_POST['status']);
   
-  if (!empty($_FILES['foto'])) {
+  if ($_FILES['foto']) {
 
-    $estudianteID = $elemento->ID;
-    $typeReplace = str_replace("image/", "", $_FILES["foto"]["type"]);
-    $type =  $_FILES["foto"]["type"];
-    $size =  $_FILES["foto"]["size"];
-    $tmpname = $_FILES["foto"]["tmp_name"];
-    $directory = "../utilities";
-    $name = 'images/'.$estudianteID.'.'.$typeReplace;
-
-    if(!file_exists('images')){
-      mkdir('images',007,true);
-      if(file_exists('images')){
-           move_uploaded_file($tmpname,$name);
-      }
-   }else{
-      move_uploaded_file($tmpname,$name);
-  }
-
-  $actualizarEstudiante->foto=$name;
-}else{
- 
+    if ($_FILES['foto']['error'] == 4) {
+        $actualizarEstudiante->foto = $elemento->foto;
+    } else {
+      $typeReplace = str_replace("image/", "", $_FILES["foto"]["type"]);
+      $type =  $_FILES["foto"]["type"];
+      $size =  $_FILES["foto"]["size"];
+      $tmpname = $_FILES["foto"]["tmp_name"];
+      $directory = "images";
+      $name = 'images/'.$editID.'.'.$typeReplace;
   
+      if(!file_exists('images')){
+        mkdir('images',007,true);
+        if(file_exists('images')){
+             move_uploaded_file($tmpname,$name);
+             $actualizarEstudiante->foto=$name;
+        }
+    }else{
+        move_uploaded_file($tmpname,$name);
+        $actualizarEstudiante->foto=$name;
+    }
+  }
 }
 
   $estudiantes[$indexElemento] = $actualizarEstudiante;
-
   $_SESSION ['estudiantes'] = $estudiantes;
-
-
-  
   header("Location:../index.php");
   exit();
 }
@@ -145,7 +141,7 @@ if(isset($_POST['nombre']) && isset($_POST['apellidos']) && isset($_POST['carrer
                         <div class="form-group">
 
                             <label for="foto">Foto de perfil</label>
-                            <input name="foto" type="file" class="form-control" id="foto" accept="image/*" required/>
+                            <input name="foto" type="file" class="form-control" id="foto" accept="image/*"/>
 
                         </div>
                     </div>

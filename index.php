@@ -171,7 +171,7 @@ function confirmationDelete()
   
       <th scope="row"><?php echo $estudiante->ID?></th>
       <td><?php echo $estudiante->nombre?></td>
-      <td><?php echo $estudiante->apellido?></td>
+      <td><?php echo $estudiante->foto?></td>
       <td><?php echo $estudiante->carrera?></td>
       <td><?php echo $estudiante->status?></td>
       <td style="text-align:center;"><img width="100px" height="90px" src="utilities/<?php echo $estudiante->foto?>"/></td>
