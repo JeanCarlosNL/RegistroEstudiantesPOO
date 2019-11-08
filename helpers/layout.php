@@ -10,7 +10,7 @@ class layout
     {
         $this->directory = ($isPage) ? "../" : "";
         $this->validation = ($validation) ? "guardar.php" : "#about";
-        $this->$detalles = $details;
+        $this->detalles = $details;
     }
 
     function validationPag(){
